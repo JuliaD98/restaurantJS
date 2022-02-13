@@ -1,0 +1,169 @@
+<!-- 
+	Name: Yullia Dziuba
+	Date: February 2019
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Restaurant order tracking</title>
+		<h1 style="color: black; padding: 5px;">IWD Restaurant</h1>
+	</head>
+	<body style="background-color: #adfff1; border: 2px solid black; padding: 5px;">
+		<div style="background-color: #ffbfbf; border: 2px solid black; padding: 5px;" >					
+			<!-- Movie Selections -->
+			<table>
+				<tr>
+					<td>
+						<!-- Option Selection 1 -->
+						<div style="background-color: white; border: 2px solid #3a302a; padding: 5px;" onmouseover="this.style.backgroundColor = '#fdff91';" onmouseout="this.style.backgroundColor = 'white';">
+							<h3>Option 1 - Soup</h3>
+							<image src="image1.png" width="250" height="250" style="display: block; margin-left: auto; margin-right: auto;"/>
+							<br/>
+							<p>Qty: <input readonly type="text" size="3" value="0" id="option1Quantity" /> </p>
+							<input type="button" value="Add to Order" onclick="addQuantity('opt1');" />
+							
+						</div>
+					</td>
+					<td>
+						<!-- Option Selection 2 -->
+						<div style="background-color: white; border: 2px solid #3a302a; padding: 5px;" onmouseover="this.style.backgroundColor = '#fdff91';" onmouseout="this.style.backgroundColor = 'white';">
+							<h3>Option 2 - Pizza</h3>
+							<image src="image2.png" width="250" height="250" style="display: block; margin-left: auto; margin-right: auto;"/>
+							<br/>							
+							<p>Qty: <input readonly type="text" size="3" value="0" id="option2Quantity" /> </p>
+							<input type="button" value="Add to Order" onclick="addQuantity('opt2');" />
+							
+						</div>	
+					</td>
+					<td>
+						<!-- Option Selection 3 -->
+						<div style="background-color: white; border: 2px solid #3a302a; padding: 5px;" onmouseover="this.style.backgroundColor = '#fdff91';" onmouseout="this.style.backgroundColor = 'white';">
+							<h3>Option 3 - Burger</h3>
+							<image src="image3.png" width="250" height="250" style="display: block; margin-left: auto; margin-right: auto;"/>
+							<br/>							
+							<p>Qty: <input readonly type="text" size="3" value="0" id="option3Quantity" /> </p>
+							<input type="button" value="Add to Order" onclick="addQuantity('opt3');" />
+							
+						</div>	
+					</td>
+					<td>
+						<!-- Option Selection 4 -->
+						<div style="background-color: white; border: 2px solid #3a302a; padding: 5px;" onmouseover="this.style.backgroundColor = '#fdff91';" onmouseout="this.style.backgroundColor = 'white';">
+							<h3>Option 4 - Salad</h3>
+							<image src="image4.png" width="250" height="250" style="display: block; margin-left: auto; margin-right: auto;"/>
+							<br/>
+							<p>Qty: <input readonly type="text" size="3" value="0" id="option4Quantity" /> </p>
+							<input type="button" value="Add to Order" onclick="addQuantity('opt4');" />
+							
+						</div>	
+					</td>
+				</tr>
+			</table>
+			
+			<!-- Buttons -->
+			<input type="button" value="Confirm Order" style="padding: 10px;" onclick="showOrder();" />
+			<input type="button" value="Reset Order" style="padding: 10px;" onclick="clearorder();" />
+			
+		</div>
+		
+		
+		<!-- Output Area -->
+		<p style="color: black; font-size: 20px; font-weight: bold; padding: 5px;">
+		Order History: 
+		</p>
+		<div style="color: black; font-weight: bold; padding: 5px;" id="theOutputArea">
+			
+		</div>
+		
+		<!-- Javascript -->
+		<script>
+
+			var qty1 = document.getElementById("option1Quantity");
+			qty1.value = 0;
+
+			function addQuantity(option){
+				if (option == "opt1"){
+					var qty1 = document.getElementById("option1Quantity");
+					var tempQty = qty1.value;
+					tempQty = parseInt(tempQty) + 1;
+					qty1.value = tempQty;
+				}
+				else if (option == "opt2"){
+					var qty2 = document.getElementById("option2Quantity");
+					var tempQty = qty2.value;
+					tempQty = parseInt(tempQty) + 1;
+					qty2.value = tempQty;
+				}
+				else if (option == "opt3"){
+					var qty3 = document.getElementById("option3Quantity");
+					var tempQty = qty3.value;
+					tempQty = parseInt(tempQty) + 1;
+					qty3.value = tempQty;
+				}
+				else if (option == "opt4"){
+					var qty4 = document.getElementById("option4Quantity");
+					var tempQty = qty4.value;
+					tempQty = parseInt(tempQty) + 1;
+					qty4.value = tempQty;
+				}
+			}
+
+			function clearorder(){
+				var qty1 = document.getElementById("option1Quantity");
+				qty1.value = 0;
+
+				var qty2 = document.getElementById("option2Quantity");
+				qty2.value = 0;
+
+				var qty3 = document.getElementById("option3Quantity");
+				qty3.value = 0;
+
+				var qty4 = document.getElementById("option4Quantity");
+				qty4.value = 0;
+			}
+
+			function showOrder(){
+
+				var qty1 = document.getElementById("option1Quantity").value;
+				qty1 = parseInt(qty1);
+				var qty2 = document.getElementById("option2Quantity").value;
+				qty2 = parseInt(qty2);
+				var qty3 = document.getElementById("option3Quantity").value;
+				qty3 = parseInt(qty3);
+				var qty4 = document.getElementById("option4Quantity").value;
+				qty4 = parseInt(qty4);
+
+
+                var output = ""
+                
+				if (qty1 > 0){
+					output += qty1 + " Soup" + "<br>";
+				}
+				
+				if (qty2 > 0){
+					output += qty2 + " Pizza" + "<br>";
+				}
+				
+				if (qty3 > 0){
+					output += qty3 + " Burger" + "<br>";
+				}
+
+				if (qty4 > 0){
+					output += qty4 + " Salad" + "<br>";
+				}
+
+				if (output == "") {
+					output += "No products were added. Please add some to your order."
+				}
+				
+				
+
+                var refOutput = document.getElementById("theOutputArea");
+				refOutput.innerHTML = output;
+
+
+				clearorder();
+			}
+		</script>
+	</body>
+</html>
